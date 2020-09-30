@@ -123,13 +123,15 @@ The annotation part will be suspended for now.
 ### "This protocol describes generating the genome indices using the genome FASTA file as input. The genome indices are required for all type of mapping jobs. This step needs to be performed only once for each genome assembly. The resulting files are saved in a user-specified directory, and can be re-used for mapping different samples to the same genome." Mapping RNA-seq Reads with STAR for Alexander Dobin and Thomas R. Gingeras.
 For quite a while I tried to generate genome indices for red palm weevil however each time the process failed because the STAR expect clean sort and cohernt data to start with. Here are the issues I run into preparing the data for generating genome indices:
 1. The annotation file and the genome file needed some preprocessing. STAR --genomeGenerate option failed becuase the names of chroms/scaffolds are not identical so I had to parse the fasta headers.
+
 `cut -d ' ' -f1 RPW.genome.fa > RPW.genomeNEW.fa`
+
 2. RAM issues: STAR is fast but requires huge ammount of RAM resources. I spent quite sometime solving this problem. Finally found an issue with same problem at https://github.com/alexdobin/STAR/issues/103 . 
 De novo assemblies generates large number of scaffolds which increase the memory consumption. The Red palm weevil genome has 24005 scaffolds. I followed this https://github.com/alexdobin/STAR/issues/103#issuecomment-173009628 to solve the issue.
 
 Here is the script for generating genome indices
-`STAR --runMode genomeGenerate \
---genomeDir Redpalm \
---genomeFastaFiles RPW.genomeNEW.fa \
---sjdbGTFfile JAACXV01.1.gbff.gff JAACXV01.2.gbff.gff 
---runThreadN 4 --genomeChrBinNbits 13`
+`STAR --runMode genomeGenerate \`
+`--genomeDir Redpalm \`
+`--genomeFastaFiles RPW.genomeNEW.fa \`
+`--sjdbGTFfile JAACXV01.1.gbff.gff JAACXV01.2.gbff.gff \`
+`--runThreadN 4 --genomeChrBinNbits 13`
