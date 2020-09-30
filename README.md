@@ -108,3 +108,13 @@ clean_up=0 #removes theVoid directory with individual analysis files, 1 = yes, 0
 TMP= #specify a directory other than the system default temporary directory for temporary files
 
 ***Two other important settings are `est2genome` and `protein2genome`, which are set to 1 so that MAKER gene predictions are based on the aligned transcripts and proteins (the only form of evidence we currently have).***
+
+
+# KACST RPW annotated genome is now available at NCBI Accession number ASM1446268v1
+The annotation part will be suspended for now.
+## RNA-Seq analysis of Red palm weevil
+## Software & Data
+#### Software prerequisites:
+1. [STAR] https://github.com/alexdobin/STAR/archive/2.7.6a.tar.gz
+2. [BEDtools](https://bedtools.readthedocs.io/en/latest/) version 2.28.0
+3. [samtools](http://www.htslib.org/) samtools 1.10; Using htslib 1.10.2
