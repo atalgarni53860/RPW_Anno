@@ -126,12 +126,18 @@ For quite a while I tried to generate genome indices for red palm weevil however
 
 `cut -d ' ' -f1 RPW.genome.fa > RPW.genomeNEW.fa`
 
-2. RAM issues: STAR is fast but requires huge ammount of RAM resources. I spent quite sometime solving this problem. Finally found an issue with same problem at https://github.com/alexdobin/STAR/issues/103 . 
+2. RAM issues: STAR is fast but requires huge ammount of RAM resources. I spent quite sometime solving this problem. Finally found an issue with same problem at https://github.com/alexdobin/STAR/issues/103 .
+
 De novo assemblies generates large number of scaffolds which increase the memory consumption. The Red palm weevil genome has 24005 scaffolds. I followed this https://github.com/alexdobin/STAR/issues/103#issuecomment-173009628 to solve the issue.
 
 Here is the script for generating genome indices
+
 `STAR --runMode genomeGenerate \`
+
 `--genomeDir Redpalm \`
+
 `--genomeFastaFiles RPW.genomeNEW.fa \`
+
 `--sjdbGTFfile JAACXV01.1.gbff.gff JAACXV01.2.gbff.gff \`
+
 `--runThreadN 4 --genomeChrBinNbits 13`
