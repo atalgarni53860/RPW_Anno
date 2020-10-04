@@ -141,3 +141,16 @@ Here is the script for generating genome indices
 `--sjdbGTFfile JAACXV01.1.gbff.gff JAACXV01.2.gbff.gff \`
 
 `--runThreadN 4 --genomeChrBinNbits 13`
+
+or 
+`STAR --runThreadN 4 \`
+
+`--runMode genomeGenerate \`
+
+`--genomeDir RPW_index \`
+
+`--genomeFastaFiles Rhy.ferrugineus.genome.fa \`
+
+`--sjdbGTFfile JAACXV01.1.gbff.gff JAACXV01.2.gbff.gff \`
+
+`--genomeSAindexNbases 13`
